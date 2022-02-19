@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/AppTheme.dart';
 import 'package:flutter_demo/MainTab.dart';
+import 'package:flutter_demo/ScreenHomeView.dart';
 import 'package:flutter_demo/baisc/WidgetSingleChildScroll.dart';
 import 'package:flutter_demo/baisc/WidgetWrap.dart';
 import 'package:flutter_demo/widget/FlutterPage1.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         textTheme: AppTheme.textTheme,
       ),
-      home: const MainTab(),
+      home: const ScreenHomeView(),
       // initialRoute: "/page1",
       // routes: {
       //   "/page1": (context) => FlutterPage1(),

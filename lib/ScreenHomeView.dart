@@ -16,7 +16,7 @@ class ScreenHomeViewState extends State<ScreenHomeView>
     with TickerProviderStateMixin {
   List<HomeList> homeList = HomeList.homeList;
   AnimationController? animationController;
-  bool multiple = true;
+  bool multiple = false;
 
   @override
   void initState() {
@@ -70,7 +70,7 @@ class ScreenHomeViewState extends State<ScreenHomeView>
                                   curve: Interval(
                                     (1 / count) * index,
                                     1.0,
-                                    curve: Curves.bounceInOut,
+                                    curve: Curves.fastOutSlowIn,
                                   ),
                                 ),
                               );
@@ -80,7 +80,15 @@ class ScreenHomeViewState extends State<ScreenHomeView>
                                 animation: animation,
                                 animationController: animationController,
                                 listData: homeList[index],
-                                callback: () {},
+                                callback: () {
+                                  Navigator.push<dynamic>(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          homeList[index].navigateScreen!,
+                                    ),
+                                  );
+                                },
                               );
                             }),
                           );
@@ -195,17 +203,27 @@ class HomeListView extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.all(
-                    const Radius.circular(5.0),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(5.0),
                   ),
                   child: Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
                       Positioned.fill(
-                          child: Image.asset(
-                        listData!.imagePath,
-                        fit: BoxFit.cover,
-                      ))
+                        child: Image.asset(
+                          listData!.imagePath,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          splashColor: Colors.grey.withOpacity(0.2),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(8)),
+                          onTap: callback,
+                        ),
+                      )
                     ],
                   ),
                 ),
