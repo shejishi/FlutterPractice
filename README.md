@@ -1,26 +1,49 @@
-# flutter_demo
+# 练习Flutter —— 记录
 
 A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-#### Flutter animation 
+#### Flutter animation
 
 所有的动画都需要使用一个 `AnimationController` , 创建 `AnimationController`的方式：
+
+```dart
+
+final animationController =
+AnimationController(vsync: this, duration: const Duration(seconds: 8));
 ```
-animationController =
-    AnimationController(vsync: this, duration: const Duration(seconds: 8));
+
+使用 `Tween` 动画：
+
+```dart
+
+final animation = Tween(begin: 0, end: 1.0).animate(CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn));
+
+final animation2 = Tween(begin: Offset(0, 1), end: Offset(0, 0))
+...
+```
+
+使用`Offset`的方式，第一个是开始位置  `dx, dy`分别代表从哪里开始，(0, 1)表示从屏幕的右侧开始， 进入到屏幕中(0, 0)
+
+##### 共享元素动画
+
+`PageTransitionSwitcher`
+
+使用方式
+
+```dart
+    PageTransitionSwitcher(
+        transitionBuilder: (Widget child,
+        Animation<double> primaryAnimation,
+        Animation<double> secondaryAnimation,){
+          return SharedAxisTransition(
+              fillColor: Colors.transparent,
+              child: child,
+              animation: primaryAnimation,
+              secondaryAnimation: secondaryAnimation,
+              transitionType: SharedAxisTransitionType.vertical,
+            );
+        }
+);
 ```
 
 
