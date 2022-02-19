@@ -24,7 +24,7 @@ class IntroductionAnimationStateScreen
   @override
   void initState() {
     animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 8));
+        AnimationController(vsync: this, duration: const Duration(seconds: 8));
     animationController.animateTo(0.0);
     super.initState();
   }
