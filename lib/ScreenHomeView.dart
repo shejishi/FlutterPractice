@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/AppTheme.dart';
 
-import 'model/HomeList.dart';
+import 'introducation_animation/model/HomeList.dart';
 
 class ScreenHomeView extends StatefulWidget {
   const ScreenHomeView({Key? key}) : super(key: key);
