@@ -12,16 +12,14 @@ class ScreenHomeView extends StatefulWidget {
   }
 }
 
-class ScreenHomeViewState extends State<ScreenHomeView>
-    with TickerProviderStateMixin {
+class ScreenHomeViewState extends State<ScreenHomeView> with TickerProviderStateMixin {
   List<HomeList> homeList = HomeList.homeList;
   AnimationController? animationController;
   bool multiple = false;
 
   @override
   void initState() {
-    animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 2000));
+    animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 2000));
     super.initState();
   }
 
@@ -43,28 +41,23 @@ class ScreenHomeViewState extends State<ScreenHomeView>
                   appBar(),
                   Expanded(
                     child: FutureBuilder(
-                      builder: (BuildContext context,
-                          AsyncSnapshot<dynamic> snapshot) {
+                      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
                         if (!snapshot.hasData) {
                           return SizedBox();
                         } else {
                           return GridView(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 12, right: 12),
+                            padding: const EdgeInsets.only(top: 0, left: 12, right: 12),
                             physics: const BouncingScrollPhysics(),
                             scrollDirection: Axis.vertical,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: multiple ? 2 : 1,
                               mainAxisSpacing: 12.0,
                               crossAxisSpacing: 12.0,
                               childAspectRatio: 1.5,
                             ),
-                            children: List<Widget>.generate(homeList.length,
-                                (int index) {
+                            children: List<Widget>.generate(homeList.length, (int index) {
                               final int count = homeList.length;
-                              final Animation<double> animation =
-                                  Tween<double>(begin: 0, end: 1).animate(
+                              final Animation<double> animation = Tween<double>(begin: 0, end: 1).animate(
                                 CurvedAnimation(
                                   parent: animationController!,
                                   curve: Interval(
@@ -84,8 +77,7 @@ class ScreenHomeViewState extends State<ScreenHomeView>
                                   Navigator.push<dynamic>(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          homeList[index].navigateScreen!,
+                                      builder: (BuildContext context) => homeList[index].navigateScreen!,
                                     ),
                                   );
                                 },
@@ -155,8 +147,7 @@ class ScreenHomeViewState extends State<ScreenHomeView>
               child: Material(
                 color: Colors.transparent,
                 child: InkWell(
-                  borderRadius:
-                      BorderRadius.circular(AppBar().preferredSize.height),
+                  borderRadius: BorderRadius.circular(AppBar().preferredSize.height),
                   child: Icon(
                     multiple ? Icons.dashboard : Icons.view_agenda,
                     color: AppTheme.dark_grey,
@@ -182,13 +173,7 @@ class HomeListView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
-  const HomeListView(
-      {Key? key,
-      this.listData,
-      this.callback,
-      this.animationController,
-      this.animation})
-      : super(key: key);
+  const HomeListView({Key? key, this.listData, this.callback, this.animationController, this.animation}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -198,8 +183,7 @@ class HomeListView extends StatelessWidget {
           return FadeTransition(
             opacity: animation!,
             child: Transform(
-              transform: Matrix4.translationValues(
-                  0.0, 50 * (1.0 - animation!.value), 0.0),
+              transform: Matrix4.translationValues(0.0, 50 * (1.0 - animation!.value), 0.0),
               child: AspectRatio(
                 aspectRatio: 1,
                 child: ClipRRect(
@@ -219,8 +203,7 @@ class HomeListView extends StatelessWidget {
                         color: Colors.transparent,
                         child: InkWell(
                           splashColor: Colors.grey.withOpacity(0.2),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(8)),
+                          borderRadius: const BorderRadius.all(Radius.circular(8)),
                           onTap: callback,
                         ),
                       )

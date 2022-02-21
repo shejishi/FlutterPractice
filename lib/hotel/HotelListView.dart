@@ -9,9 +9,7 @@ class HotelListView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
-  const HotelListView(
-      {Key? key, this.hotelData, this.animationController, this.animation})
-      : super(key: key);
+  const HotelListView({Key? key, this.hotelData, this.animationController, this.animation}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +19,9 @@ class HotelListView extends StatelessWidget {
           return FadeTransition(
             opacity: animation!,
             child: Transform(
-              transform: Matrix4.translationValues(
-                  0.0, 50 * (1.0 - animation!.value), 0.0),
+              transform: Matrix4.translationValues(0.0, 50 * (1.0 - animation!.value), 0.0),
               child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 24, right: 24, top: 8, bottom: 16),
+                padding: const EdgeInsets.only(left: 24, right: 24, top: 8, bottom: 16),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   onTap: () {},
@@ -58,8 +54,7 @@ class HotelListView extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                color: HotelAppTheme.buildLightTheme()
-                                    .backgroundColor,
+                                color: HotelAppTheme.buildLightTheme().backgroundColor,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,13 +62,10 @@ class HotelListView extends StatelessWidget {
                                     Expanded(
                                       child: Container(
                                         child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 16, top: 8, bottom: 8),
+                                          padding: const EdgeInsets.only(left: 16, top: 8, bottom: 8),
                                           child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 hotelData!.titleTxt,
@@ -84,79 +76,54 @@ class HotelListView extends StatelessWidget {
                                                 ),
                                               ),
                                               Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                mainAxisAlignment: MainAxisAlignment.start,
                                                 children: [
                                                   Text(
                                                     hotelData!.subTxt,
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        color: Colors.grey
-                                                            .withOpacity(0.8)),
+                                                    style: TextStyle(fontSize: 14, color: Colors.grey.withOpacity(0.8)),
                                                   ),
                                                   const SizedBox(width: 4),
                                                   Icon(
-                                                    FontAwesomeIcons
-                                                        .mapMarkerAlt,
+                                                    FontAwesomeIcons.mapMarkerAlt,
                                                     size: 12,
-                                                    color: HotelAppTheme
-                                                            .buildLightTheme()
-                                                        .primaryColor,
+                                                    color: HotelAppTheme.buildLightTheme().primaryColor,
                                                   ),
                                                   Expanded(
                                                     child: Text(
                                                       '${hotelData!.dist.toStringAsFixed(1)} km to city',
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
+                                                      overflow: TextOverflow.ellipsis,
                                                       style: TextStyle(
                                                         fontSize: 14,
-                                                        color: Colors.grey
-                                                            .withOpacity(0.8),
+                                                        color: Colors.grey.withOpacity(0.8),
                                                       ),
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 4),
+                                                padding: const EdgeInsets.only(top: 4),
                                                 child: Row(
                                                   children: [
                                                     RatingBar(
-                                                      ratingWidget:
-                                                          RatingWidget(
+                                                      ratingWidget: RatingWidget(
                                                         empty: Icon(
-                                                          Icons
-                                                              .star_half_rounded,
-                                                          color: HotelAppTheme
-                                                                  .buildLightTheme()
-                                                              .primaryColor,
+                                                          Icons.star_half_rounded,
+                                                          color: HotelAppTheme.buildLightTheme().primaryColor,
                                                         ),
                                                         full: Icon(
-                                                          Icons
-                                                              .star_rate_rounded,
-                                                          color: HotelAppTheme
-                                                                  .buildLightTheme()
-                                                              .primaryColor,
+                                                          Icons.star_rate_rounded,
+                                                          color: HotelAppTheme.buildLightTheme().primaryColor,
                                                         ),
                                                         half: Icon(
-                                                          Icons
-                                                              .star_half_rounded,
-                                                          color: HotelAppTheme
-                                                                  .buildLightTheme()
-                                                              .primaryColor,
+                                                          Icons.star_half_rounded,
+                                                          color: HotelAppTheme.buildLightTheme().primaryColor,
                                                         ),
                                                       ),
-                                                      onRatingUpdate:
-                                                          (rating) {},
-                                                      itemPadding:
-                                                          EdgeInsets.zero,
-                                                      initialRating:
-                                                          hotelData!.rating,
-                                                      direction:
-                                                          Axis.horizontal,
+                                                      onRatingUpdate: (rating) {},
+                                                      itemPadding: EdgeInsets.zero,
+                                                      initialRating: hotelData!.rating,
+                                                      direction: Axis.horizontal,
                                                       allowHalfRating: true,
                                                       itemCount: 5,
                                                       itemSize: 25,
@@ -164,8 +131,7 @@ class HotelListView extends StatelessWidget {
                                                     Expanded(
                                                       child: Text(
                                                         ' ${hotelData!.reviews} 查看',
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
+                                                        overflow: TextOverflow.ellipsis,
                                                       ),
                                                     )
                                                   ],
@@ -177,13 +143,10 @@ class HotelListView extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 16, top: 8),
+                                      padding: const EdgeInsets.only(right: 16, top: 8),
                                       child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
                                         children: [
                                           Text(
                                             '\$${hotelData!.perNight}',
@@ -197,8 +160,7 @@ class HotelListView extends StatelessWidget {
                                             '/per night',
                                             style: TextStyle(
                                               fontSize: 14,
-                                              color:
-                                                  Colors.grey.withOpacity(0.8),
+                                              color: Colors.grey.withOpacity(0.8),
                                             ),
                                           ),
                                         ],
