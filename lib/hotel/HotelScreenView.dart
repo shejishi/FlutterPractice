@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/hotel/HotelFilterPage.dart';
 import 'package:flutter_demo/hotel/model/HotelTheme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -16,8 +17,7 @@ class HotelScreenView extends StatefulWidget {
   }
 }
 
-class HotelScreenState extends State<HotelScreenView>
-    with TickerProviderStateMixin {
+class HotelScreenState extends State<HotelScreenView> with TickerProviderStateMixin {
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now().add(const Duration(days: 5));
   List<HotelListData> hotelList = HotelListData.hotelList;
@@ -27,8 +27,7 @@ class HotelScreenState extends State<HotelScreenView>
 
   @override
   Widget build(BuildContext context) {
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 480));
+    animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 480));
 
     scrollController = ScrollController();
     return Theme(
@@ -50,12 +49,10 @@ class HotelScreenState extends State<HotelScreenView>
                   Expanded(
                     child: NestedScrollView(
                       controller: scrollController,
-                      headerSliverBuilder:
-                          (BuildContext context, bool innerBoxIsScrolled) {
+                      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
                         return [
                           SliverList(
-                            delegate: SliverChildBuilderDelegate(
-                                (BuildContext context, int index) {
+                            delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
                               return Column(
                                 children: [
                                   getSearchBarUI(),
@@ -74,21 +71,17 @@ class HotelScreenState extends State<HotelScreenView>
                         ];
                       },
                       body: Container(
-                        color:
-                            HotelAppTheme.buildLightTheme().backgroundColor,
+                        color: HotelAppTheme.buildLightTheme().backgroundColor,
                         child: ListView.builder(
                           itemCount: hotelList.length,
                           padding: const EdgeInsets.only(top: 8),
                           scrollDirection: Axis.vertical,
                           itemBuilder: (BuildContext context, int index) {
-                            final int count =
-                                hotelList.length > 10 ? 10 : hotelList.length;
-                            final Animation<double> animation =
-                                Tween(begin: 0.0, end: 1.0).animate(
+                            final int count = hotelList.length > 10 ? 10 : hotelList.length;
+                            final Animation<double> animation = Tween(begin: 0.0, end: 1.0).animate(
                               CurvedAnimation(
                                 parent: animationController,
-                                curve: Interval((1 / count) * index, 1.0,
-                                    curve: Curves.fastOutSlowIn),
+                                curve: Interval((1 / count) * index, 1.0, curve: Curves.fastOutSlowIn),
                               ),
                             );
                             animationController.forward();
@@ -134,8 +127,7 @@ class HotelScreenState extends State<HotelScreenView>
                   ],
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 16, right: 16, top: 4, bottom: 4),
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 4, bottom: 4),
                   child: TextField(
                     onChanged: (String txt) {},
                     style: const TextStyle(
@@ -202,10 +194,7 @@ class HotelScreenState extends State<HotelScreenView>
             decoration: BoxDecoration(
               color: HotelAppTheme.buildLightTheme().backgroundColor,
               boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    offset: const Offset(0, -2),
-                    blurRadius: 8.0),
+                BoxShadow(color: Colors.grey.withOpacity(0.2), offset: const Offset(0, -2), blurRadius: 8.0),
               ],
             ),
           ),
@@ -242,7 +231,7 @@ class HotelScreenState extends State<HotelScreenView>
                         context,
                         MaterialPageRoute(
                             builder: (BuildContext context) {
-                              return Container();
+                              return const HotelFilterPage();
                             },
                             fullscreenDialog: true),
                       );
@@ -262,8 +251,7 @@ class HotelScreenState extends State<HotelScreenView>
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(
                               Icons.sort,
-                              color:
-                                  HotelAppTheme.buildLightTheme().primaryColor,
+                              color: HotelAppTheme.buildLightTheme().primaryColor,
                             ),
                           ),
                         ],
@@ -358,8 +346,7 @@ class HotelScreenState extends State<HotelScreenView>
                   FocusScope.of(context).requestFocus(FocusNode());
                 },
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 8, right: 8, top: 4, bottom: 4),
+                  padding: const EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -400,8 +387,7 @@ class ContestTabHeader extends SliverPersistentHeaderDelegate {
   ContestTabHeader(this.searchUI);
 
   @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return searchUI;
   }
 
