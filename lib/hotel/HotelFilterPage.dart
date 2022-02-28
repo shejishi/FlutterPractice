@@ -246,7 +246,7 @@ class HotelFilterState extends State<HotelFilterPage> {
           ),
         ));
         if (count < popularFilterListData.length - 1) {
-          count + -1;
+          count += 1;
         } else {
           break;
         }

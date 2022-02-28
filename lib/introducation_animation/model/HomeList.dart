@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/design/DesignCourseHome.dart';
 
 import '../../hotel/HotelScreenView.dart';
 import '../IntroductionAnimationScreen.dart';
@@ -26,6 +27,7 @@ class HomeList {
     ),
     HomeList(
       imagePath: 'assets/design_course/design_course.png',
+      navigateScreen: const DesignCourseHome(),
     ),
   ];
 }
