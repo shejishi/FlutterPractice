@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_demo/design/DesignCourseAppTheme.dart';
 import 'package:flutter_demo/utils/HexColor.dart';
 
+import 'CategoryListView.dart';
+
 class DesignCourseHome extends StatefulWidget {
   const DesignCourseHome({Key? key}) : super(key: key);
 
@@ -13,6 +15,8 @@ class DesignCourseHome extends StatefulWidget {
 }
 
 class DesignCourseHomeState extends State<DesignCourseHome> {
+  CategoryType categoryType = CategoryType.UI;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -146,39 +150,104 @@ class DesignCourseHomeState extends State<DesignCourseHome> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(left: 16, right: 16, top: 8),
           child: Text(
             "Category",
-            style: TextStyle(),
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: DesignCourseAppTheme.darkerText,
+            ),
           ),
-        )
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16),
+          child: Row(
+            children: [
+              getButtonUI(CategoryType.UI, categoryType == CategoryType.UI),
+              const SizedBox(
+                width: 16,
+              ),
+              getButtonUI(CategoryType.Coding, categoryType == CategoryType.Coding),
+              const SizedBox(
+                width: 16,
+              ),
+              getButtonUI(CategoryType.Basic, categoryType == CategoryType.Basic),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        CategoryListView(
+          callback: () {
+            moveTo();
+          },
+        ),
       ],
     );
   }
+
+  Widget getButtonUI(CategoryType type, bool isSelected) {
+    String txt = "";
+    if (CategoryType.UI == type) {
+      txt = "Ui/Ux";
+    } else if (CategoryType.Coding == type) {
+      txt = "Coding";
+    } else if (CategoryType.Basic == type) {
+      txt = "Basic UI";
+    }
+
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          color: isSelected ? DesignCourseAppTheme.nearlyBlue : DesignCourseAppTheme.nearlyWhite,
+          borderRadius: const BorderRadius.all(Radius.circular(50)),
+          border: Border.all(color: DesignCourseAppTheme.nearlyBlue),
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            splashColor: Colors.white24,
+            borderRadius: const BorderRadius.all(Radius.circular(24)),
+            onTap: () {
+              setState(() {
+                categoryType = type;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 12, bottom: 12, left: 18, right: 18),
+              child: Center(
+                child: Text(
+                  txt,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    letterSpacing: 0.27,
+                    color: isSelected ? DesignCourseAppTheme.nearlyWhite : DesignCourseAppTheme.nearlyBlue,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void moveTo() {
+    
+  }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+enum CategoryType {
+  UI,
+  Coding,
+  Basic,
+}
