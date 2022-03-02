@@ -4,6 +4,7 @@ import 'package:flutter_demo/design/DesignCourseAppTheme.dart';
 import 'package:flutter_demo/utils/HexColor.dart';
 
 import 'CategoryListView.dart';
+import 'PopularCourseListView.dart';
 
 class DesignCourseHome extends StatefulWidget {
   const DesignCourseHome({Key? key}) : super(key: key);
@@ -38,6 +39,9 @@ class DesignCourseHomeState extends State<DesignCourseHome> {
                     children: [
                       getSearchBarUI(),
                       getCategoryUI(),
+                      Flexible(
+                        child: getPopularCourseUI(),
+                      ),
                     ],
                   ),
                 ),
@@ -241,8 +245,31 @@ class DesignCourseHomeState extends State<DesignCourseHome> {
     );
   }
 
-  void moveTo() {
-    
+  void moveTo() {}
+
+  Widget getPopularCourseUI() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0, left: 18, right: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Popular Course1",
+            textAlign: TextAlign.start,
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 22,
+              letterSpacing: 0.27,
+              color: DesignCourseAppTheme.darkerText,
+            ),
+          ),
+          Flexible(
+            child: PopularCourseListView(callBack: () {}),
+          ),
+        ],
+      ),
+    );
   }
 }
 

@@ -237,7 +237,7 @@ class HotelScreenState extends State<HotelScreenView> with TickerProviderStateMi
                       );
                     },
                     child: Padding(
-                      padding: EdgeInsets.only(left: 8),
+                      padding: const EdgeInsets.only(left: 8),
                       child: Row(
                         children: [
                           const Text(
