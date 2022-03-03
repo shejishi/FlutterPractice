@@ -63,6 +63,7 @@ class PopularCourseListViewState extends State<PopularCourseListView> with Ticke
                 crossAxisCount: 2,
                 mainAxisSpacing: 32,
                 crossAxisSpacing: 32,
+                childAspectRatio: 0.8
               ),
             );
           }

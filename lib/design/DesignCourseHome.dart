@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_demo/design/CourseInfoScreen.dart';
 import 'package:flutter_demo/design/DesignCourseAppTheme.dart';
 import 'package:flutter_demo/utils/HexColor.dart';
 
@@ -245,7 +246,9 @@ class DesignCourseHomeState extends State<DesignCourseHome> {
     );
   }
 
-  void moveTo() {}
+  void moveTo() {
+    Navigator.push<dynamic>(context, MaterialPageRoute(builder: (BuildContext context) => CourseInfoScreen()));
+  }
 
   Widget getPopularCourseUI() {
     return Padding(
@@ -254,7 +257,7 @@ class DesignCourseHomeState extends State<DesignCourseHome> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "Popular Course1",
             textAlign: TextAlign.start,
             style: TextStyle(
@@ -265,7 +268,9 @@ class DesignCourseHomeState extends State<DesignCourseHome> {
             ),
           ),
           Flexible(
-            child: PopularCourseListView(callBack: () {}),
+            child: PopularCourseListView(callBack: () {
+              moveTo();
+            }),
           ),
         ],
       ),
