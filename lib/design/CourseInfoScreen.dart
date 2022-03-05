@@ -141,8 +141,8 @@ class CourseInfoScreenState extends State<CourseInfoScreen> with TickerProviderS
                             child: AnimatedOpacity(
                               duration: const Duration(milliseconds: 500),
                               opacity: opacity2,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+                              child: const Padding(
+                                padding: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
                                 child: Text(
                                   "Lorem ipsum is simply dummy text of printing & typesetting industry, Lorem ipsum is simply dummy text of printing & typesetting industry.",
                                   textAlign: TextAlign.justify,
